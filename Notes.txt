@@ -1,0 +1,69 @@
+1. Created Project with npm init command 
+2. Installed Node Dependencies 
+    express Node js Framework 
+    body-parser to parse incoming requests
+    mongoose to connect with mLab
+    concurrently - npm dependenct to run multiple npm scripts  for client and server side both
+    nodemon - to reload when code is changed (dev dependency)
+
+3. Create a folder 'client' in the main folder
+   run the command 'create-react-app .'  . This will create the react project inside your client folder ( This step completes your front to back MERN application)
+
+4. Inside React package.json , add a proxy (This will be used to call our node js API)
+    "proxy":"http://localhost:5000"
+
+5. Inorder to avoid running seperate commands to run both your front end and the back end app , use concurrently ( installed previously in node app Dependencies)
+
+6. Inside Client install following Dependencies 
+    -bootstrap ( To use bootstrap in your project)
+    - reactstrap ( reactstrap allows us to use bootstrap components as react components )
+    - uuid ( to generate random uids)
+    - react-transition-group
+
+7.Implementing Redux 
+    Install redux , react-redux 
+            redux-thunk( middleware)
+
+    Need to import createStore (for creatig the store) , applyMiddleware ( thunk being the middleware) , 
+    compose( Compose is used when you want to pass multiple store enhancers to the store. 
+             Store enhancers are higher order functions that add some extra functionality to the store. 
+             The only store enhancer which is supplied with Redux by default is applyMiddleware however many other are available.  ) 
+    from redux 
+
+
+8. For Depolyment
+    Changes in server.js ( Node)
+
+    // Serve Static Assests if in production
+    if( process.env.NODE_ENV === 'production' ){
+        // Set Static Folder
+        app.use(express.static('client/build'));
+        app.get('*', (req,res) => {
+            res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+        });
+    }
+
+
+9.  For Deploying to Heroku
+        Install Heroku CLI 
+        From MS Visual Studio IDE Terminal , Run following 
+        Login With credentials
+            command --- heroku login 
+        
+        Create Heroku app
+            command --- heroku create
+
+        Go to Heroku , Click on Deploy Method we use is Heroku GIT
+
+       Creating Git Repo
+            command --- git init 
+            command --- heroku git:remote -a lit-chamber-91945 (From Heroku Deploy tab)
+            Above Steps Links the Heroku and your app
+
+            git add 
+            git commit
+            git push heroku master
+
+       
+
+        
